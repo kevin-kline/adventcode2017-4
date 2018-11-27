@@ -21,6 +21,7 @@ public class Drive {
 		
 		int totalValidPassphrases = 0;
 		
+		
 		while(scanner.hasNextLine()) {
 			
 			String line = scanner.nextLine();
@@ -29,10 +30,15 @@ public class Drive {
 		}
 		scanner.close();
 		
+		//Step 2: Split each arraylist entry into an array
+		
 		for(String s : textLinesFromInput) {
 			
 			String[] sArray = s.split("\\s+");
 			
+			
+			//Step 3: Compare each element in the array to every other element (except itself)
+			//to find duplicates
 			int numberOfDuplicatesInArray = 0;
 			
 			for(int i = 0; i < sArray.length; i++) {
@@ -48,11 +54,12 @@ public class Drive {
 					
 				}
 			}
+			//Step 4: If there were no duplicates, add one to the total number of valid passphrases.
 			if(numberOfDuplicatesInArray == 0) {
 				totalValidPassphrases += 1;
 			}
 		}
-		
+		//Step 5: Print the result.
 		System.out.println("Total passphrases: " + textLinesFromInput.size());
 		System.out.println("Total valid passphrases: " + totalValidPassphrases);
 				
